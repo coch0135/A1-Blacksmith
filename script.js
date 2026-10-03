@@ -17,16 +17,17 @@
 // }
 
 //(From Directions) Build in this order:
-// Select the existing page elements and create the two state variables.
-// Build getForgeStatus() and updateForge().
-// Build resetForge() and call it to initialize the page.
-// Build and test heatForge(amount).
-// Build and test both outcomes of makeSword().
+// Select the existing page elements and create the two state variables. - done
+// Build getForgeStatus() and updateForge(). - done
+// Build resetForge() and call it to initialize the page. - done
+// Build and test heatForge(amount). - done
+// Build and test both outcomes of makeSword(). - done
 
 //My code starts here
 
 // 1. Select the forge, heat, sword count, status, image, and message elements.
-//    Find their IDs in index.html.
+    // Find their IDs in index.html.
+
 // ELEMENT VARIABLES
 const $forge = document.getElementById("forge")
 const $heatValue = document.getElementById("heat-value")
@@ -36,6 +37,7 @@ const $forgeStatus = document.getElementById("forge-status")
 const $forgeMessage = document.getElementById("action-message")
 
 // 2. Create the two state variables: heat and swords made.
+
 // STATE VARIABLES
 let forgeHeat = 20
 let swordCount = 0
@@ -43,9 +45,10 @@ let swordCount = 0
 // FUNCTIONS
 
 // 3. Write getForgeStatus(heatValue). Return the correct status string.
-// Use if / else if / else to choose the status from the table above (Brightspace).
-// Return the status as a string.
-// Keep this function focused on choosing a value; it should not change the page.
+    // Use if / else if / else to choose the status from the table
+    // Return the status as a string.
+    // Keep this function focused on choosing a value; it should not change the page.
+
 function getForgeStatus(heatValue) {
     if (heatValue < 30) {
         return "Too cold"
@@ -59,22 +62,25 @@ function getForgeStatus(heatValue) {
 }
 
 // 4. Write updateForge(). Update text and apply one status class.
-//    Change the supplied forge image src and alt to match the heat.
-//    Keep the most recent action message visible.
-
-// Update the supplied image’s src and alt attributes to match the heat, as in the monster demo (Brightspace chart in assignment instructions)
+    // Change the supplied forge image src and alt to match the heat.
+    // Keep the most recent action message visible.
+    // Update the supplied image’s src and alt attributes to match the heat, as in monster demo 
 
 function updateForge() {
+
     // Display the current heat and sword count using textContent.
     $heatValue.textContent = forgeHeat
     $swordCount.textContent = swordCount
+
     // Call getForgeStatus() and display its returned value.
     let status = getForgeStatus(forgeHeat)
     $forgeStatus.textContent = status
+
     // Remove the previous status classes so only one remains.
     $forge.classList.remove("is-cold", "is-ready", "is-roaring")
+
     // Use classList to apply the matching starter CSS class: is-cold, is-ready, or is-roaring.
-    // Update the supplied image’s src and alt attributes to match the heat, as in the monster dem
+    // Update the supplied image’s src and alt attributes to match the heat, as in the monster demo
     if (status == "Too cold") {
         $forge.classList.add("is-cold")
         $forgeImage.setAttribute("src", "assets/forge-cold.svg")
@@ -93,9 +99,9 @@ function updateForge() {
 }
 
 // 5. Write resetForge(). Restore the state, message, and display.
-// Restore heat to 20 and swords made to 0.
-// Replace the previous action message with a starting message.
-// Call updateForge().
+    // Restore heat to 20 and swords made to 0.
+    // Replace the previous action message with a starting message.
+    // Call updateForge().
 function resetForge() {
     forgeHeat = 20
     swordCount = 0
@@ -104,22 +110,23 @@ function resetForge() {
 }
 
 // 6. Write heatForge(amount). Add heat, cap it, and update the page.
-// Add amount to the current heat.
-// Stop the heat at 100 if the addition would exceed 100.
-// Display a short message confirming that the forge was heated.
-// Call updateForge().
-// For this assignment, the player will supply whole-number amounts from 0 to 100. You do not need to handle text, missing arguments, or other invalid inputs.
-// Example command: heatForge(20).
+    // Add amount to the current heat.
+    // Stop the heat at 100 if the addition would exceed 100.
+    // Display a short message confirming that the forge was heated.
+    // Call updateForge().
+    // For this assignment, the player will supply whole-number amounts from 0 to 100. You do not  need to handle text, missing arguments, or other invalid inputs.
+    // Example command: heatForge(20).
+
 function heatForge(amount) {
     forgeHeat = forgeHeat + amount
-    if (forgeHeat > 100){
+    if (forgeHeat > 100) {
         forgeHeat = 100
-        $forgeMessage.textContent = "Fire is already hot." 
-    } 
-    else if (forgeHeat < 30){
+        $forgeMessage.textContent = "Fire is already hot."
+    }
+    else if (forgeHeat < 30) {
         $forgeMessage.textContent = "Fire is still not hot enough."
     }
-    else{
+    else {
         $forgeMessage.textContent = "Fire is hot enough to forge."
     }
     updateForge()
@@ -131,13 +138,22 @@ function heatForge(amount) {
 // Otherwise, leave both numbers unchanged and display a message explaining that more heat is needed.
 // Call updateForge() after either result.
 // Exactly 30 heat is enough. Each call makes at most one sword.
+
 function makeSword() {
-
+    if (forgeHeat >= 30) {
+        forgeHeat = forgeHeat - 30
+        swordCount++
+        updateForge()
+        $forgeMessage.textContent = "Sword created"
+    }
+    else {
+        updateForge()
+        $forgeMessage.textContent = "Not enough heat"
+    }
+    updateForge()
 }
-
-
 
 // 8. Call resetForge() once to start the game.
 resetForge()
 
-// Use the tests in ASSIGNMENT.md to check your work.
+// Use the tests in ASSIGNMENT.md to check your work. - success :)
