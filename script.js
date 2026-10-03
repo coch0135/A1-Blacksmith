@@ -16,28 +16,6 @@
 //     }
 // }
 
-
-// 1. Select the forge, heat, sword count, status, image, and message elements.
-//    Find their IDs in index.html. - Done 
-
-// 2. Create the two state variables: heat and swords made. - Done
-
-// 3. Write getForgeStatus(heatValue). Return the correct status string.
-
-// 4. Write updateForge(). Update text and apply one status class.
-//    Change the supplied forge image src and alt to match the heat.
-//    Keep the most recent action message visible.
-
-// 5. Write resetForge(). Restore the state, message, and display.
-
-// 6. Write heatForge(amount). Add heat, cap it, and update the page.
-
-// 7. Write makeSword(). Handle both success and insufficient heat.
-
-// 8. Call resetForge() once to start the game.
-
-// Use the tests in ASSIGNMENT.md to check your work.
-
 //(From Directions) Build in this order:
 // Select the existing page elements and create the two state variables.
 // Build getForgeStatus() and updateForge().
@@ -47,6 +25,8 @@
 
 //My code starts here
 
+// 1. Select the forge, heat, sword count, status, image, and message elements.
+//    Find their IDs in index.html.
 // ELEMENT VARIABLES
 const $forge = document.getElementById("forge")
 const $heatValue= document.getElementById("heat-value")
@@ -55,6 +35,41 @@ const $forgeImage = document.getElementById("forge-image")
 const $forgeStatus = document.getElementById("forge-status")
 const $forgeMessage = document.getElementById("action-message")
 
+// 2. Create the two state variables: heat and swords made.
 // STATE VARIABLES
 let forgeHeat = 20
 let swordCount = 0 
+
+// FUNCTIONS
+
+// 3. Write getForgeStatus(heatValue). Return the correct status string.
+function getForgeStatus(heatValue){
+
+}
+
+// 4. Write updateForge(). Update text and apply one status class.
+//    Change the supplied forge image src and alt to match the heat.
+//    Keep the most recent action message visible.
+function updateForge(){
+
+}
+
+// 5. Write resetForge(). Restore the state, message, and display.
+function resetForge(){
+
+}
+
+// 6. Write heatForge(amount). Add heat, cap it, and update the page.
+function heatForge(amount){
+
+}
+
+// 7. Write makeSword(). Handle both success and insufficient heat.
+function makeSword(){
+
+}
+
+// 8. Call resetForge() once to start the game.
+resetForge()
+
+// Use the tests in ASSIGNMENT.md to check your work.
